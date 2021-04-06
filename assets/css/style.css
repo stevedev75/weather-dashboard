@@ -9,8 +9,20 @@
       text-align: center;
   }
 
- 
+ .col-4 {
+ -ms-flex-align: start;
+ }
 
+ #weatherDeets {
+  padding-bottom: 0%;
+  margin-bottom: 0%;
+ }
+
+#fiveDay {
+  
+  display: flex;
+  justify-content: space-around;
+}
 
   #city-buttons .btn {
     color: black;
@@ -30,8 +42,5 @@
     transform: translate(-1px, -1px);
   }
 
-  #weatherDeets {
-    display: flex;
-    justify-content: right;
-  }
   
+ 
