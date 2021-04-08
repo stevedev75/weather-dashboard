@@ -18,8 +18,11 @@
   margin-bottom: 0%;
  }
 
+.subtitle {
+  font-size: 150%;
+}
+
 #fiveDay {
-  
   display: flex;
   justify-content: space-around;
 }
