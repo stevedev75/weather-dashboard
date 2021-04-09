@@ -13,7 +13,7 @@
  -ms-flex-align: start;
  }
 
- img {
+ .curCity img {
   max-width: 10%;
   height: auto;
 }
