@@ -33,21 +33,15 @@
   width: 20em;
 }
 
-.card-body {
-  width: -moz-fit-content;
-  width: fit-content;
+.card-body { 
+  /*width: fit-content;*/
+  /*width:max-content;*/
+  /*max-width: 100% ;*/
   padding: 5px;
   margin-bottom: 1em;
 }
 
-
-
-
-
-
-
 /*add deatils here to make "boxes" for 5-day fit better*/
-}
 
   #city-buttons .btn {
     color: black;

@@ -1,8 +1,3 @@
-//var currentTemp = document.getElementById("curTemp");
-//var currentHum = document.getElementById("curHum");
-//var currentWind = document.getElementById("curWind");
-//var currentUv = document.getElementById("curUv");
-//var subMit = document.getElementById("sbutton");
 var form = document.getElementById("user-form");
 
 // vars to use for dates in 5-day forecast(??)
@@ -12,15 +7,17 @@ var dayPlus3 = document.getElementById("dayThree");
 var dayPlus4 = document.getElementById("dayFour");
 var dayPlus5 = document.getElementById("dayFive");
 
-
-
-
-
-
 form.addEventListener('submit', function (e) {
     e.preventDefault();
     var cityName = document.getElementById("city").value;
     console.log(cityName);
+
+    //var city = "city";
+    //var text = $(this)
+    //var text = cityName
+    //localStorage.setItem(city, text);
+    //console.log(city);
+    //console.log(text);
 
     var url = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&units=imperial&appid=b6ac08ddf42292bbdd1f3dae08ee40e4";
     console.log(url);
@@ -39,8 +36,7 @@ form.addEventListener('submit', function (e) {
             var urlTwo = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exclude={part}&appid=b6ac08ddf42292bbdd1f3dae08ee40e4";
             console.log("urlTwo= " + urlTwo);
 
-            //currentIcon = document.getElementById("todayId")=source.icon;
-
+        
             //Injects weather details from API into HTML//
             document.getElementById("curCity").innerHTML = (cityName);
             document.getElementById("curTemp").innerHTML = "Temperature: " + (temp) + " F";
@@ -63,7 +59,9 @@ form.addEventListener('submit', function (e) {
             var humidOne = data.list[1].main.humidity;
             console.log(humidOne);
 
-            //var dateOne = data.list[1].clouds.dt;
+
+            // trying to extract date from api
+            //var dateOne = data.list[1].clouds.?????
             //console.log("dateOne: " + dateOne);
 
             var iconOne = data.list[1].weather[0].icon;
@@ -73,8 +71,8 @@ form.addEventListener('submit', function (e) {
             document.getElementById("iconOne").innerHTML += `<img src="${iconPicOne}" alt="weather icon" />`;
 
 
-            document.getElementById("tmpOne").innerHTML = "Temp: " + (tempOne) + " F";
-            document.getElementById("humOne").innerHTML = "Humidity: " + (humidOne) + " %";
+            document.getElementById("tmpOne").innerHTML = "Temp " + (tempOne) + " F";
+            document.getElementById("humOne").innerHTML = "Humidity " + (humidOne) + " %";
 
 
             //Day Two of 5 Day Forecast
@@ -85,8 +83,8 @@ form.addEventListener('submit', function (e) {
             var iconTwo = data.list[2].weather[0].icon;
             console.log(iconTwo);
 
-            document.getElementById("tmpTwo").innerHTML = "Temp: " + (tempTwo) + " F";
-            document.getElementById("humTwo").innerHTML = "Humidity: " + (humidTwo) + " %";
+            document.getElementById("tmpTwo").innerHTML = "Temp " + (tempTwo) + " F";
+            document.getElementById("humTwo").innerHTML = "Humidity " + (humidTwo) + " %";
         
             var iconTwo = data.list[2].weather[0].icon;
             console.log(iconTwo);
@@ -103,8 +101,8 @@ form.addEventListener('submit', function (e) {
             var iconThree = data.list[3].weather[0].icon;
             console.log(iconThree);
 
-            document.getElementById("tmpThree").innerHTML = "Temp: " + (tempThree) + " F";
-            document.getElementById("humThree").innerHTML = "Humidity: " + (humidThree) + " %";
+            document.getElementById("tmpThree").innerHTML = "Temp " + (tempThree) + " F";
+            document.getElementById("humThree").innerHTML = "Humidity " + (humidThree) + " %";
             
             var iconThree = data.list[3].weather[0].icon;
             console.log(iconThree);
@@ -120,8 +118,8 @@ form.addEventListener('submit', function (e) {
             var iconFour = data.list[4].weather[0].icon;
             console.log(iconFour);
 
-            document.getElementById("tmpFour").innerHTML = "Temp: " + (tempFour) + " F";
-            document.getElementById("humFour").innerHTML = "Humidity: " + (humidFour) + " %";
+            document.getElementById("tmpFour").innerHTML = "Temp " + (tempFour) + " F";
+            document.getElementById("humFour").innerHTML = "Humidity " + (humidFour) + " %";
             
             var iconFour = data.list[4].weather[0].icon;
             console.log(iconFour);
@@ -137,8 +135,8 @@ form.addEventListener('submit', function (e) {
             var iconFive = data.list[5].weather[0].icon;
             console.log(iconFive);
 
-            document.getElementById("tmpFive").innerHTML = "Temp: " + (tempFive) + " F";
-            document.getElementById("humFive").innerHTML = "Humidity: " + (humidFive) + " %";
+            document.getElementById("tmpFive").innerHTML = "Temp " + (tempFive) + " F";
+            document.getElementById("humFive").innerHTML = "Humidity " + (humidFive) + " %";
             
             var iconFive = data.list[5].weather[0].icon;
             console.log(iconFive);
