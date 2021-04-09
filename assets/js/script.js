@@ -56,7 +56,8 @@ form.addEventListener('submit', function (e) {
             var iconTodayPic ="http://openweathermap.org/img/wn/" + iconToday + ".png";
             console.log("iconTodayPic: " + iconTodayPic);
             
-            document.getElementById("todayIcon").insertAdjacentHTML="src=" + iconTodayPic;
+            document.getElementById("curCity").innerHTML += `<img src="${iconTodayPic}" alt="weather icon" />`;
+
             
             //Day One of 5 Day Forecast
             var tempOne = data.list[1].main.temp;
