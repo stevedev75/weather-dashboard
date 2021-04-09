@@ -5,6 +5,18 @@ var currentUv = document.getElementById("curUv");
 var subMit = document.getElementById("sbutton");
 var form = document.getElementById("user-form");
 
+// vars to 
+var dayPlus1 = document.getElementById("dayOne");
+var dayPlus2 = document.getElementById("dayTwo");
+var dayPlus3 = document.getElementById("dayThree");
+var dayPlus4 = document.getElementById("dayFour");
+var dayPlus5 = document.getElementById("dayFive");
+
+
+
+
+
+
 form.addEventListener('submit', function (e) {
     e.preventDefault();
     var cityName = document.getElementById("city").value;
@@ -25,6 +37,11 @@ form.addEventListener('submit', function (e) {
             var lon = data.city.coord.lon;
             console.log(lon);
 
+            var urlTwo = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exclude={part}&appid=b6ac08ddf42292bbdd1f3dae08ee40e4";
+            console.log("urlTwo= " + urlTwo);
+
+            //currentIcon = document.getElementById("todayId")=source.icon;
+
             //Injects weather details from API into HTML//
             document.getElementById("curCity").innerHTML = (cityName);
             document.getElementById("curTemp").innerHTML = "Temperature: " + (temp) + " F";
@@ -33,22 +50,27 @@ form.addEventListener('submit', function (e) {
             var today = moment();
             $("#currentDay").text(today.format("MMM Do, YYYY"));
 
-            var iconPic = "http://openweathermap.org/img/wn/" + icon + ".png";
-            console.log(iconPic);
+            var iconToday = data.list[0].weather[0].icon;
+            console.log("iconToday= " + iconToday);
 
+            var iconTodayPic ="http://openweathermap.org/img/wn/" + iconToday + ".png";
+            console.log("iconTodayPic: " + iconTodayPic);
+            
+            document.getElementById("todayIcon").insertAdjacentHTML="src=" + iconTodayPic;
+            
             //Day One of 5 Day Forecast
             var tempOne = data.list[1].main.temp;
             console.log(tempOne);
             var humidOne = data.list[1].main.humidity;
             console.log(humidOne);
-            var iconDOne = data.list[1].weather[0].icon;
+            var iconOne = data.list[1].weather[0].icon;
             console.log(iconOne);
             var iconPic1 = "http://openweathermap.org/img/wn/" + (iconOne) + ".png";
             console.log(iconPic1);
 
             document.getElementById("tmpOne").innerHTML = "Temp: " + (tempOne) + " F";
             document.getElementById("humOne").innerHTML = "Humidity: " + (humidOne) + " %";
-            // document.getElementById("iconOne").innerHTML = ((inconPic) + (inconOne) + ".png");
+            /*document.getElementById("iconOne").innerHTML =  <img src="<img src ="http://openweathermap.org/img/wn/02n.png">+ (inconOne) + ".png"));*/
 
             //Day Two of 5 Day Forecast
             var tempTwo = data.list[2].main.temp;
@@ -86,28 +108,42 @@ form.addEventListener('submit', function (e) {
             document.getElementById("humFour").innerHTML = "Humidity: " + (humidFour) + " %";
             //getElementById("iconOne").innerHTML = ((inconPic) + (inconFour) + ".png");
 
-             //Day Five of 5 Day Forecast
-             var tempFive = data.list[5].main.temp;
-             console.log(tempFive);
-             var humidFive = data.list[5].main.humidity;
-             console.log(humidFive);
-             var iconFive = data.list[5].weather[0].icon;
-             console.log(iconFive);
- 
-             document.getElementById("tmpFive").innerHTML = "Temp: " + (tempFive) + " F";
-             document.getElementById("humFive").innerHTML = "Humidity: " + (humidFive) + " %";
-             //getElementById("iconOne").innerHTML = ((inconPic) + (inconFour) + ".png");
+            //Day Five of 5 Day Forecast
+            var tempFive = data.list[5].main.temp;
+            console.log(tempFive);
+            var humidFive = data.list[5].main.humidity;
+            console.log(humidFive);
+            var iconFive = data.list[5].weather[0].icon;
+            console.log(iconFive);
+
+            document.getElementById("tmpFive").innerHTML = "Temp: " + (tempFive) + " F";
+            document.getElementById("humFive").innerHTML = "Humidity: " + (humidFive) + " %";
+            //getElementById("iconOne").innerHTML = ((inconPic) + (inconFour) + ".png");
 
 
             //how to get relative time from current day for each of the next 5 days?
             // var dateOne = moment();
             // $("#dayOne").text(dateOne.format("MMM Do, YYYY"));
 
+            fetch(urlTwo).then(function (response) {
+                response.json().then(function (data) {
+                    var uviCity = data.current.uvi;
+                    console.log("uvi= " + uviCity);
+                    document.getElementById("curUv").innerHTML = "UV Index: " + (uviCity);
 
+                    if (uviCity < 3){
+                        document.getElementById("curUv").innerHTML = "<span style='color: green;'>" +"UV Index: " + uviCity + "</span>"; 
+                    } 
+                    else if (uviCity > 2 && uviCity < 6) {
+                        document.getElementById("curUv").innerHTML = "<span style='color: orange;'>" +"UV Index: " + uviCity + "</span>";
+                    }
+                    else { 
+                        document.getElementById("curUv").innerHTML = "<span style='color: red;'>" +"UV Index: " + uviCity + "</span>";
+                    
 
-
+                    } 
+                });
+            });   
         });
     })
 })
-
-

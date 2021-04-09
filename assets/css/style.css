@@ -5,7 +5,7 @@
   header {
       flex: auto;
       color: white;
-      background-color: black;
+      background-color:cornflowerblue;
       text-align: center;
   }
 
@@ -13,6 +13,10 @@
  -ms-flex-align: start;
  }
 
+ img {
+  max-width: 10%;
+  height: auto;
+}
  #weatherDeets {
   padding-bottom: 0%;
   margin-bottom: 0%;
@@ -25,8 +29,24 @@
 #fiveDay {
  display: flex;
  justify-content: space-around;
+  padding: 10px;
+  width: 20em;
+}
+
+.card-body {
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 5px;
+  margin-bottom: 1em;
+}
 
 
+
+
+
+
+
+/*add deatils here to make "boxes" for 5-day fit better*/
 }
 
   #city-buttons .btn {
