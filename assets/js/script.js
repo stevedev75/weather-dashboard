@@ -12,12 +12,12 @@ form.addEventListener('submit', function (e) {
     var cityName = document.getElementById("city").value;
     console.log(cityName);
 
-    //var city = "city";
-    //var text = $(this)
-    //var text = cityName
-    //localStorage.setItem(city, text);
-    //console.log(city);
-    //console.log(text);
+    var city = "city";
+    var text = cityName;
+    localStorage.setItem(city, text);
+    console.log(city);
+    console.log(text);
+
 
     var url = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&units=imperial&appid=b6ac08ddf42292bbdd1f3dae08ee40e4";
     console.log(url);
