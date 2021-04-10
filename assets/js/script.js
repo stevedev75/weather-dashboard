@@ -1,12 +1,5 @@
 var form = document.getElementById("user-form");
 
-// vars to use for dates in 5-day forecast(??)
-var dayPlus1 = document.getElementById("dayOne");
-var dayPlus2 = document.getElementById("dayTwo");
-var dayPlus3 = document.getElementById("dayThree");
-var dayPlus4 = document.getElementById("dayFour");
-var dayPlus5 = document.getElementById("dayFive");
-
 var searchedCities = [];
 var localStorageCities = JSON.parse(localStorage.getItem("searchedCities"));
 if (localStorageCities) {
@@ -20,8 +13,14 @@ function displayButtons() {
         var cityButton = document.createElement("button");
         cityButton.textContent = searchedCity;
         document.querySelector("#city-buttons").appendChild(cityButton);
+
+          };
+
     }
-}
+// PSEUDO CODE: add a function so connection to "cityButton" so that when it is clicked
+// we "inject" that value of that input into the form so that it performs an api call 
+// on that data in the fetch.
+
 displayButtons();
 
 form.addEventListener('submit', function (e) {
@@ -34,6 +33,12 @@ form.addEventListener('submit', function (e) {
     searchedCities.push(cityName)
     localStorage.setItem("searchedCities", JSON.stringify(searchedCities));
     displayButtons();
+
+    //function newBtnClick() {
+    //document.getElementById("city-buttons").addEventListener("click", function() {
+    //    document.querySelector("#cityname").innerHTML=(cityName) });
+   // }
+
 
     console.log(city);
     console.log(text);
@@ -65,6 +70,8 @@ form.addEventListener('submit', function (e) {
             var today = moment();
             $("#currentDay").text(today.format("MMM Do, YYYY"));
 
+            
+
             var iconToday = data.list[0].weather[0].icon;
             console.log("iconToday= " + iconToday);
 
@@ -73,26 +80,25 @@ form.addEventListener('submit', function (e) {
 
             document.getElementById("curCity").innerHTML += `<img src="${iconTodayPic}" alt="weather icon" />`;
 
+            // newBtnClick()
+
             //Day One of 5 Day Forecast
             var tempOne = data.list[1].main.temp;
             console.log(tempOne);
             var humidOne = data.list[1].main.humidity;
             console.log(humidOne);
 
-
-            // trying to extract date from api
-            //var dateOne = data.list[1].clouds.?????
-            //console.log("dateOne: " + dateOne);
-
             var iconOne = data.list[1].weather[0].icon;
             console.log(iconOne);
             var iconPicOne = "http://openweathermap.org/img/wn/" + (iconOne) + ".png";
             console.log(iconPicOne);
             document.getElementById("iconOne").innerHTML += `<img src="${iconPicOne}" alt="weather icon" />`;
-
-
             document.getElementById("tmpOne").innerHTML = "Temp " + (tempOne) + " F";
             document.getElementById("humOne").innerHTML = "Humidity " + (humidOne) + " %";
+
+            var tomorrow = moment().add(1,'days').format('MM/DD');
+            document.getElementById("dayOne").innerHTML = tomorrow;
+            console.log("tomorrow= " + tomorrow);
 
 
             //Day Two of 5 Day Forecast
@@ -112,6 +118,10 @@ form.addEventListener('submit', function (e) {
             console.log(iconPicTwo);
             document.getElementById("iconTwo").innerHTML += `<img src="${iconPicTwo}" alt="weather icon" />`;
 
+            var dayTwo= moment().add(2,'days').format('MM/DD');
+            document.getElementById("dayTwo").innerHTML = dayTwo;
+            console.log("DayTwo= " + dayTwo);
+
 
             //Day Three of 5 Day Forecast
             var tempThree = data.list[3].main.temp;
@@ -130,6 +140,10 @@ form.addEventListener('submit', function (e) {
             console.log(iconPicThree);
             document.getElementById("iconThree").innerHTML += `<img src="${iconPicThree}" alt="weather icon" />`;
 
+            var dayThree= moment().add(3,'days').format('MM/DD');
+            document.getElementById("dayThree").innerHTML = dayThree;
+            console.log("DayThree= " + dayThree);
+
             //Day Four of 5 Day Forecast
             var tempFour = data.list[4].main.temp;
             console.log(tempFour);
@@ -146,6 +160,11 @@ form.addEventListener('submit', function (e) {
             var iconPicFour = "http://openweathermap.org/img/wn/" + (iconFour) + ".png";
             console.log(iconPicFour);
             document.getElementById("iconFour").innerHTML += `<img src="${iconPicFour}" alt="weather icon" />`;
+
+            var dayFour= moment().add(4,'days').format('MM/DD');
+            document.getElementById("dayFour").innerHTML = dayFour;
+            console.log("DayFour= " + dayFour);
+        
 
             //Day Five of 5 Day Forecast
             var tempFive = data.list[5].main.temp;
@@ -164,10 +183,13 @@ form.addEventListener('submit', function (e) {
             console.log(iconPicFive);
             document.getElementById("iconFive").innerHTML += `<img src="${iconPicFive}" alt="weather icon" />`;
 
+            var dayFive= moment().add(5,'days').format('MM/DD');
+            document.getElementById("dayFive").innerHTML = dayFive;
+            console.log("DayFive= " + dayFive);
+        
 
-            //how to get relative time from current day for each of the next 5 days?
-            // var dateOne = moment();
-            // $("#dayOne").text(dateOne.format("MMM Do, YYYY"));
+            var dateOne = moment();
+            console.log("dateOne= " + dateOne);
 
             fetch(urlTwo).then(function (response) {
                 response.json().then(function (data) {
