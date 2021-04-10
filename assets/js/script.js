@@ -7,6 +7,23 @@ var dayPlus3 = document.getElementById("dayThree");
 var dayPlus4 = document.getElementById("dayFour");
 var dayPlus5 = document.getElementById("dayFive");
 
+var searchedCities = [];
+var localStorageCities = JSON.parse(localStorage.getItem("searchedCities"));
+if (localStorageCities) {
+    searchedCities = localStorageCities;
+}
+
+function displayButtons() {
+    document.querySelector("#city-buttons").innerHTML="";
+    for (let i = 0; i < searchedCities.length; i++) {
+        const searchedCity = searchedCities[i];
+        var cityButton = document.createElement("button");
+        cityButton.textContent = searchedCity;
+        document.querySelector("#city-buttons").appendChild(cityButton);
+    }
+}
+displayButtons();
+
 form.addEventListener('submit', function (e) {
     e.preventDefault();
     var cityName = document.getElementById("city").value;
@@ -14,7 +31,10 @@ form.addEventListener('submit', function (e) {
 
     var city = "city";
     var text = cityName;
-    localStorage.setItem(city, text);
+    searchedCities.push(cityName)
+    localStorage.setItem("searchedCities", JSON.stringify(searchedCities));
+    displayButtons();
+
     console.log(city);
     console.log(text);
 
@@ -36,7 +56,7 @@ form.addEventListener('submit', function (e) {
             var urlTwo = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exclude={part}&appid=b6ac08ddf42292bbdd1f3dae08ee40e4";
             console.log("urlTwo= " + urlTwo);
 
-        
+
             //Injects weather details from API into HTML//
             document.getElementById("curCity").innerHTML = (cityName);
             document.getElementById("curTemp").innerHTML = "Temperature: " + (temp) + " F";
@@ -85,7 +105,7 @@ form.addEventListener('submit', function (e) {
 
             document.getElementById("tmpTwo").innerHTML = "Temp " + (tempTwo) + " F";
             document.getElementById("humTwo").innerHTML = "Humidity " + (humidTwo) + " %";
-        
+
             var iconTwo = data.list[2].weather[0].icon;
             console.log(iconTwo);
             var iconPicTwo = "http://openweathermap.org/img/wn/" + (iconTwo) + ".png";
@@ -103,7 +123,7 @@ form.addEventListener('submit', function (e) {
 
             document.getElementById("tmpThree").innerHTML = "Temp " + (tempThree) + " F";
             document.getElementById("humThree").innerHTML = "Humidity " + (humidThree) + " %";
-            
+
             var iconThree = data.list[3].weather[0].icon;
             console.log(iconThree);
             var iconPicThree = "http://openweathermap.org/img/wn/" + (iconThree) + ".png";
@@ -120,7 +140,7 @@ form.addEventListener('submit', function (e) {
 
             document.getElementById("tmpFour").innerHTML = "Temp " + (tempFour) + " F";
             document.getElementById("humFour").innerHTML = "Humidity " + (humidFour) + " %";
-            
+
             var iconFour = data.list[4].weather[0].icon;
             console.log(iconFour);
             var iconPicFour = "http://openweathermap.org/img/wn/" + (iconFour) + ".png";
@@ -137,7 +157,7 @@ form.addEventListener('submit', function (e) {
 
             document.getElementById("tmpFive").innerHTML = "Temp " + (tempFive) + " F";
             document.getElementById("humFive").innerHTML = "Humidity " + (humidFive) + " %";
-            
+
             var iconFive = data.list[5].weather[0].icon;
             console.log(iconFive);
             var iconPicFive = "http://openweathermap.org/img/wn/" + (iconFive) + ".png";
