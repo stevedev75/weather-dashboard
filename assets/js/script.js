@@ -13,7 +13,6 @@ function displayButtons() {
         var cityButton = document.createElement("button");
         cityButton.textContent = searchedCity;
         document.querySelector("#city-buttons").appendChild(cityButton);
-
           };
     }
 
@@ -29,12 +28,6 @@ form.addEventListener('submit', function (e) {
     searchedCities.push(cityName)
     localStorage.setItem("searchedCities", JSON.stringify(searchedCities));
     displayButtons();
-
-   function newBtnClick() {
-   document.getElementById("city-buttons").addEventListener("click", function() {
-    document.querySelector("#city").innerHTML=(searchedCity)});
-    console.log ("newBtnClick:" + newBtnClick)
-    }
 
 
     console.log(city);
@@ -77,7 +70,7 @@ form.addEventListener('submit', function (e) {
 
             document.getElementById("curCity").innerHTML += `<img src="${iconTodayPic}" alt="weather icon" />`;
 
-            newBtnClick()
+
 
             //Day One of 5 Day Forecast
             var tempOne = data.list[1].main.temp;
