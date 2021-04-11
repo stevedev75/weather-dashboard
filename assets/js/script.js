@@ -15,11 +15,7 @@ function displayButtons() {
         document.querySelector("#city-buttons").appendChild(cityButton);
 
           };
-
     }
-// PSEUDO CODE: add a function so connection to "cityButton" so that when it is clicked
-// we "inject" that value of that input into the form so that it performs an api call 
-// on that data in the fetch.
 
 displayButtons();
 
@@ -34,10 +30,11 @@ form.addEventListener('submit', function (e) {
     localStorage.setItem("searchedCities", JSON.stringify(searchedCities));
     displayButtons();
 
-    //function newBtnClick() {
-    //document.getElementById("city-buttons").addEventListener("click", function() {
-    //    document.querySelector("#cityname").innerHTML=(cityName) });
-   // }
+   function newBtnClick() {
+   document.getElementById("city-buttons").addEventListener("click", function() {
+    document.querySelector("#city").innerHTML=(searchedCity)});
+    console.log ("newBtnClick:" + newBtnClick)
+    }
 
 
     console.log(city);
@@ -80,7 +77,7 @@ form.addEventListener('submit', function (e) {
 
             document.getElementById("curCity").innerHTML += `<img src="${iconTodayPic}" alt="weather icon" />`;
 
-            // newBtnClick()
+            newBtnClick()
 
             //Day One of 5 Day Forecast
             var tempOne = data.list[1].main.temp;
