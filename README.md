@@ -10,11 +10,15 @@ This application solves the problem of "fetching" dynamic data from an API (whic
 
 In this project, I learned a lot -- more specifically -- about APIs and selecting specific data points from them to "inject" into the HTML for a dynamic and seamless user experience.
 
-Please see screenshot to preview UI:
+Please see screenshots to preview UI:
 ![image](https://user-images.githubusercontent.com/77076615/114306392-e65df580-9aa9-11eb-88c4-04dda67e5c1e.png)
+
+![image](https://user-images.githubusercontent.com/77076615/115592839-c1376700-a2a1-11eb-8d6f-66a19c47a9bf.png)
 
 Please see the URL to the deployed web application below
 https://stevedev75.github.io/weather-dashboard/
+
+Contact me: stephendever.cr@gmail.com
 
 Copyright (c) 2021 Stephen Dever
 
