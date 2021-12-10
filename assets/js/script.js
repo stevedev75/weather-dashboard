@@ -20,8 +20,6 @@ function displayButtons() {
 
 displayButtons();
 
-/* MY ATTEMPT TO ADD A NEW FUNCTION TO TEST IF "ONCLICK" WORKS_________________ */
-
 function secondBtnSearch () {
         console.log("Click from second button");
         console.log(this);
@@ -36,8 +34,10 @@ function secondBtnSearch () {
     
                 //current day weather details//
                 var temp = data.list[0].main.temp;
+                var TEMP0 = Math.round(temp);
                 var humid = data.list[0].main.humidity;
                 var wind = data.list[0].wind.speed;
+                var WIND0 = Math.round(wind);
                 var lat = data.city.coord.lat;
                 console.log(lat);
                 var lon = data.city.coord.lon;
@@ -49,9 +49,9 @@ function secondBtnSearch () {
     
                 //Injects weather details from API into HTML//
                 document.getElementById("curCity").innerHTML = (cityName);
-                document.getElementById("curTemp").innerHTML = "Temperature: " + (temp) + " F";
-                document.getElementById("curHum").innerHTML = "Humidity: " + (humid) + " %";
-                document.getElementById("curWind").innerHTML = "Wind: " + (wind) + " mph";
+                document.getElementById("curTemp").innerHTML = "Temperature: " + (TEMP0) + "F";
+                document.getElementById("curHum").innerHTML = "Humidity: " + (humid) + "%";
+                document.getElementById("curWind").innerHTML = "Wind: " + (WIND0) + "mph";
                 var today = moment();
                 $("#currentDay").text(today.format("MMM Do, YYYY"));
     
@@ -69,55 +69,47 @@ function secondBtnSearch () {
     
                 //Day One of 5 Day Forecast
                 var tempOne = data.list[1].main.temp;
-                console.log(tempOne);
+                // Here is how to round the numbers to save space in the cards//
+                var TEMP1 = Math.round(tempOne);
                 var humidOne = data.list[1].main.humidity;
-                console.log(humidOne);
-    
                 var iconOne = data.list[1].weather[0].icon;
-                console.log(iconOne);
                 var iconPicOne = "http://openweathermap.org/img/wn/" + (iconOne) + ".png";
-                console.log(iconPicOne);
                 document.getElementById("iconOne").innerHTML += `<img src="${iconPicOne}" alt="weather icon" />`;
-                document.getElementById("tmpOne").innerHTML = "Temp " + (tempOne) + " F";
-                document.getElementById("humOne").innerHTML = "Humidity " + (humidOne) + " %";
-    
+                document.getElementById("tmpOne").innerHTML = "Temp " + (TEMP1) + "F";
+                document.getElementById("humOne").innerHTML = "Humidity " + (humidOne) + "%";
                 var tomorrow = moment().add(1,'days').format('MM/DD');
                 document.getElementById("dayOne").innerHTML = tomorrow;
-                console.log("tomorrow= " + tomorrow);
     
     
                 //Day Two of 5 Day Forecast
                 var tempTwo = data.list[2].main.temp;
-                console.log(tempTwo);
+                var TEMP2 = Math.round(tempTwo);
                 var humidTwo = data.list[2].main.humidity;
-                console.log(humidTwo);
                 var iconTwo = data.list[2].weather[0].icon;
-                console.log(iconTwo);
+                
     
-                document.getElementById("tmpTwo").innerHTML = "Temp " + (tempTwo) + " F";
-                document.getElementById("humTwo").innerHTML = "Humidity " + (humidTwo) + " %";
+                document.getElementById("tmpTwo").innerHTML = "Temp " + (TEMP2) + "F";
+                document.getElementById("humTwo").innerHTML = "Humidity " + (humidTwo) + "%";
     
                 var iconTwo = data.list[2].weather[0].icon;
-                console.log(iconTwo);
+              
                 var iconPicTwo = "http://openweathermap.org/img/wn/" + (iconTwo) + ".png";
-                console.log(iconPicTwo);
+               
                 document.getElementById("iconTwo").innerHTML += `<img src="${iconPicTwo}" alt="weather icon" />`;
     
                 var dayTwo= moment().add(2,'days').format('MM/DD');
                 document.getElementById("dayTwo").innerHTML = dayTwo;
-                console.log("DayTwo= " + dayTwo);
-    
+                
     
                 //Day Three of 5 Day Forecast
                 var tempThree = data.list[3].main.temp;
-                console.log(tempThree);
+                var TEMP3 = Math.round(tempThree);
                 var humidThree = data.list[3].main.humidity;
-                console.log(humidThree);
                 var iconThree = data.list[3].weather[0].icon;
                 console.log(iconThree);
     
-                document.getElementById("tmpThree").innerHTML = "Temp " + (tempThree) + " F";
-                document.getElementById("humThree").innerHTML = "Humidity " + (humidThree) + " %";
+                document.getElementById("tmpThree").innerHTML = "Temp " + (TEMP3) + "F";
+                document.getElementById("humThree").innerHTML = "Humidity " + (humidThree) + "%";
     
                 var iconThree = data.list[3].weather[0].icon;
                 console.log(iconThree);
@@ -131,36 +123,31 @@ function secondBtnSearch () {
     
                 //Day Four of 5 Day Forecast
                 var tempFour = data.list[4].main.temp;
-                console.log(tempFour);
+                var TEMP4 = Math.round(tempFour);
                 var humidFour = data.list[4].main.humidity;
                 console.log(humidFour);
                 var iconFour = data.list[4].weather[0].icon;
                 console.log(iconFour);
     
-                document.getElementById("tmpFour").innerHTML = "Temp " + (tempFour) + " F";
-                document.getElementById("humFour").innerHTML = "Humidity " + (humidFour) + " %";
+                document.getElementById("tmpFour").innerHTML = "Temp " + (TEMP4) + "F";
+                document.getElementById("humFour").innerHTML = "Humidity " + (humidFour) + "%";
     
                 var iconFour = data.list[4].weather[0].icon;
-                console.log(iconFour);
                 var iconPicFour = "http://openweathermap.org/img/wn/" + (iconFour) + ".png";
-                console.log(iconPicFour);
                 document.getElementById("iconFour").innerHTML += `<img src="${iconPicFour}" alt="weather icon" />`;
     
                 var dayFour= moment().add(4,'days').format('MM/DD');
                 document.getElementById("dayFour").innerHTML = dayFour;
-                console.log("DayFour= " + dayFour);
             
     
                 //Day Five of 5 Day Forecast
                 var tempFive = data.list[5].main.temp;
-                console.log(tempFive);
+                var TEMP5 = Math.round(tempFive);
                 var humidFive = data.list[5].main.humidity;
-                console.log(humidFive);
                 var iconFive = data.list[5].weather[0].icon;
-                console.log(iconFive);
     
-                document.getElementById("tmpFive").innerHTML = "Temp " + (tempFive) + " F";
-                document.getElementById("humFive").innerHTML = "Humidity " + (humidFive) + " %";
+                document.getElementById("tmpFive").innerHTML = "Temp " + (TEMP5) + "F";
+                document.getElementById("humFive").innerHTML = "Humidity " + (humidFive) + "%";
     
                 var iconFive = data.list[5].weather[0].icon;
                 console.log(iconFive);
